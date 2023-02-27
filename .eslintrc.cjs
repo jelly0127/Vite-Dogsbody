@@ -1,0 +1,32 @@
+module.exports = {
+  env: {
+    browser: true,
+    commonjs: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  overrides: [],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+  },
+  plugins: ['react', '@typescript-eslint'],
+  rules: {
+    'no-alert': 2,
+    'no-undef': 2,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    'prettier/prettier': 'error',
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    'react/display-name': 'off',
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+  },
+}
