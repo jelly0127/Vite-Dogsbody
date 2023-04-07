@@ -123,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
 const defaultTheme: CustomTheme = {
   grey1: '#333333',
   grey2: '#666666',
-  grey3: '#333333',
+  grey3: '#FFFFFF',
   grey4: '#999999',
   grey5: '#FF3838',
   grey6: '#3D8DE2',

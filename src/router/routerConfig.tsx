@@ -4,7 +4,7 @@ import { RouteObject } from 'react-router-dom'
 
 //懒加载
 const Main = React.lazy(() => import('../pages/Main/Main'))
-// const Home = React.lazy(() => import('../pages/Home/Home'))
+const Home = React.lazy(() => import('../pages/Home/Home'))
 const History = React.lazy(() => import('../pages/History/History'))
 // const Ido = React.lazy(() => import('../pages/Ido/Ido'))
 const Test = React.lazy(() => import('../pages/Test/Test'))
@@ -20,9 +20,9 @@ const lazyFactory = (LazyComponent: React.LazyExoticComponent<React.FC<{}>>) => 
 
 //路由路径的基本配置
 export const routes: RouteObject[] = [
-  // { path: '/', element: lazyFactory(Home) },
+  { path: '/', element: lazyFactory(Home) },
   // { path: '/ido', element: lazyFactory(Ido) }
-  { path: '/', element: lazyFactory(Test) },
+  { path: '/test', element: lazyFactory(Test) },
   { path: '/main', element: lazyFactory(Main) },
   { path: '/History', element: lazyFactory(History) },
 ]
