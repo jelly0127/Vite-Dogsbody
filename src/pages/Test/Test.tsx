@@ -47,8 +47,8 @@ const Test: FC = memo(() => {
   const handleStart = useCallback(() => {
     timer.current == null
       ? (timer.current = setInterval(() => {
-        setTime(time => time + 1)
-      }, 100))
+          setTime(time => time + 1)
+        }, 100))
       : null
   }, [time])
 
