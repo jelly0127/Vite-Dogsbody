@@ -2,6 +2,7 @@ import { ChainId } from './chainId'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { NetworkConnector } from '@/web3/connectors/NetworkConnector'
+import ICON_METAMASK from '@/images/metamask.png'
 import RPC from './rpc'
 
 const supportedChainIds = Object.values(ChainId) as number[]
@@ -21,39 +22,30 @@ export interface WalletInfo {
   iconName: string
   description: string
   href: string | null
-  color: string
+  color?: string
   primary?: true
-  mobile?: true
+  mobile?: boolean
   mobileOnly?: true
 }
 
 export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
-  INJECTED: {
-    connector: injected,
-    name: 'Injected',
-    iconName: 'injected.svg',
-    description: 'Injected web3 provider.',
-    href: null,
-    color: '#010101',
-    primary: true,
-  },
   METAMASK: {
     connector: injected,
     name: 'MetaMask',
-    iconName: 'metamask.png',
+    iconName: ICON_METAMASK,
     description: 'Easy-to-use browser extension.',
     href: null,
-    color: '#E8831D',
+    mobile: false,
   },
-  METAMASK_MOBILE: {
-    name: 'MetaMask',
-    iconName: 'metamask.png',
-    description: 'Open in MetaMask app.',
-    href: 'https://metamask.app.link/dapp/app.sushi.com',
-    color: '#E8831D',
-    mobile: true,
-    mobileOnly: true,
-  },
+  // METAMASK_MOBILE: {
+  //   name: 'MetaMask',
+  //   iconName: 'metamask.png',
+  //   description: 'Open in MetaMask app.',
+  //   href: 'https://metamask.app.link/dapp/app.sushi.com',
+  //   color: '#E8831D',
+  //   mobile: true,
+  //   mobileOnly: true,
+  // },
   //   WALLET_CONNECT: {
   //     connector: async () => {
   //       const WalletConnectConnector = (await import("@web3-react/walletconnect-connector")).WalletConnectConnector;

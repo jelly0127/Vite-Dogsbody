@@ -3,11 +3,12 @@ import { useEffect } from 'react'
 import { injected } from '@/web3/constants/wallets'
 import { useActiveWeb3React } from '@/hooks/useActiveWeb3React'
 import { Button } from 'antd'
-import { UnsupportedChainIdError } from '@web3-react/core'
+// import { UnsupportedChainIdError } from '@web3-react/core'
 import { connectorLocalStorageKey } from '@/web3/connectors'
 
 export default function Home() {
-  const { account, chainId, activate, deactivate, connector } = useActiveWeb3React()
+  const { account, chainId, activate, deactivate } = useActiveWeb3React()
+
   const handleConnect = () => {
     activate(injected, undefined, true)
       .then(() => {
@@ -23,24 +24,25 @@ export default function Home() {
         // }
       })
   }
-  const getProviderName = () => {
-    if (connector === injected) {
-      return 'MetaMask'
-    } else {
-      return 'Unknown Provider'
-    }
-  }
+
+  // const getProviderName = () => {
+  //   if (connector === injected) {
+  //     return 'MetaMask'
+  //   } else {
+  //     return 'Unknown Provider'
+  //   }
+  // }
   useEffect(() => {
     handleConnect()
-    console.log(666, getProviderName())
+    // console.log(666, getProviderName())
   }, [])
 
   return (
-    <div style={{ color: '#FFFFFF' }}>
+    <>
       <span>{account}</span>
       <span>{chainId}</span>
       <Button onClick={deactivate}>disconnect</Button>
       <Button onClick={() => handleConnect()}>connect</Button>
-    </div>
+    </>
   )
 }
