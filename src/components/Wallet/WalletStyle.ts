@@ -15,6 +15,18 @@ const WalletWrapper = styled.div`
     border: 1px solid ${(prop: any) => (prop.theme.isDark ? 'none' : prop.theme.grey8)}!important;
   }
 `
+const InstallStyle = styled(Button)`
+  ${flexCenter}
+  height: 100%;
+  .install_icon {
+    width: 100%;
+    ${flexCenter}
+  }
+  img {
+    width: 28px;
+    height: 28px;
+  }
+`
 const NetworkContent = styled(Button)`
   border: 1px solid ${(prop: any) => (prop.theme.isDark ? 'none' : prop.theme.grey8)}!important;
   background: unset;
@@ -25,7 +37,10 @@ const WalletContent = styled(Button)`
   background: unset;
   border-radius: 20px;
   padding: 5px 10px;
-
+  .user_box {
+    flex-direction: row;
+    ${flexCenter}
+  }
   img {
     border-radius: 50%;
     width: 28px;
@@ -65,8 +80,10 @@ const SelectBox = styled.div`
     margin-top: 20px;
     height: 100%;
     width: 100%;
+    border: 0.5px solid ${(prop: any) => prop.theme.grey7};
+    border-radius: 10px;
+
     :hover {
-      border-radius: 10px;
       background: ${(prop: any) => prop.theme.grey7};
       color: ${(prop: any) => prop.theme.grey8};
       border: 0.5px solid ${(prop: any) => prop.theme.primaryColor};
@@ -96,6 +113,7 @@ const SelectBox = styled.div`
     font-size: ${(prop: any) => prop.theme.fontNormal};
     :hover {
       text-decoration: underline;
+      color: ${(prop: any) => prop.theme.grey6};
     }
     img {
       width: 12px;
@@ -129,6 +147,7 @@ const WalletInfoBox = styled.div`
     :hover {
       cursor: pointer;
       text-decoration: underline;
+      color: ${(prop: any) => prop.theme.primaryColor};
       img {
         content: url(${ICON_COPY_LIGHT});
       }
@@ -141,4 +160,4 @@ const WalletInfoBox = styled.div`
     width: 100%;
   }
 `
-export { WalletWrapper, NetworkContent, WalletBox, WalletContent, SelectBox, MDropdown, WalletInfoBox }
+export { InstallStyle, WalletWrapper, NetworkContent, WalletBox, WalletContent, SelectBox, MDropdown, WalletInfoBox }

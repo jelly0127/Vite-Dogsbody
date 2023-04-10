@@ -2,7 +2,7 @@ import { ChainId } from './chainId'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { NetworkConnector } from '@/web3/connectors/NetworkConnector'
-import ICON_METAMASK from '@/images/metamask.png'
+import ICON_METAMASK from '@/images/wallet-metamask.png'
 import RPC from './rpc'
 
 const supportedChainIds = Object.values(ChainId) as number[]

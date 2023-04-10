@@ -1,5 +1,3 @@
-const config_dev = {
+export default {
   BASE_URL: 'http://localhost:3002',
 }
-
-export default config_dev

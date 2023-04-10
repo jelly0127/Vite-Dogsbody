@@ -32,17 +32,10 @@ export default function Home() {
   //     return 'Unknown Provider'
   //   }
   // }
-  useEffect(() => {
-    handleConnect()
-    // console.log(666, getProviderName())
-  }, [])
+  // useEffect(() => {
+  //   handleConnect()
+  //   // console.log(666, getProviderName())
+  // }, [])
 
-  return (
-    <>
-      <span>{account}</span>
-      <span>{chainId}</span>
-      <Button onClick={deactivate}>disconnect</Button>
-      <Button onClick={() => handleConnect()}>connect</Button>
-    </>
-  )
+  return <></>
 }

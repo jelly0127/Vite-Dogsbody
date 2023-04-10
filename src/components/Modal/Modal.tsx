@@ -16,7 +16,7 @@ interface PropsData {
   title?: string
   isModalOpen: boolean
   setIsModalOpen: () => void
-  child: React.ReactElement
+  child?: React.ReactElement
   bodyStyle?: object
   width?: number
 }

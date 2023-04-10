@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useMemo, useState } from 'react'
+import React, { FC, ReactElement, useCallback, useMemo, useState } from 'react'
 import { useRoutes } from 'react-router-dom'
 import routes from './router/routerConfig'
 import { MyContext } from './MyContext'
@@ -9,10 +9,10 @@ import useWindowSize from './hooks/isDesktop'
 import { updateDesktop } from './redux/reducer'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './style'
-import React from 'react'
 import { ConfigProvider } from 'antd'
-import Web3ReactManager from '@/components/Web3ReactManager/index'
+import ToastContainer from '@/components/Toast/ToastContainer'
 
+import Web3ReactManager from '@/components/Web3ReactManager/index'
 const App: FC = () => {
   const element = useRoutes(routes) as ReactElement
   const size = useWindowSize()
@@ -48,6 +48,7 @@ const App: FC = () => {
               {element}
             </>
           </Web3ReactManager>
+          <ToastContainer />
         </ThemeProvider>
       </MyContext.Provider>
     </ConfigProvider>
