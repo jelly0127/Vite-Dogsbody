@@ -9,7 +9,6 @@ import useWindowSize from './hooks/isDesktop'
 import { updateDesktop } from './redux/counterSlice'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './style'
-import CommunityLinkGroup from './components/CommunityLinkGroup/CommunityLinkGroup'
 import React from 'react'
 function App() {
   const element = useRoutes(routes)
@@ -32,7 +31,6 @@ function App() {
         <GlobalStyle />
         {/* <Header /> */}
         {element}
-        <CommunityLinkGroup />
       </ThemeProvider>
     </MyContext.Provider>
   )

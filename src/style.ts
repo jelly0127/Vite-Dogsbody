@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 16px;
     padding: 0;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
 
   }
   #root{
