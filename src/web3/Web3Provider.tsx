@@ -22,6 +22,7 @@ const connectors: [MetaMask | WalletConnect | WalletConnectV2 | CoinbaseWallet |
 
 // function Child() {
 //   const { connector, isActivating } = useWeb3React()
+//   console.log(`Connector is: `, connector)
 //   console.log(`Priority Connector is: ${getName(connector)}`)
 //   console.log(`isActivating:`, isActivating)
 //   return null
