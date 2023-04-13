@@ -1,40 +1,54 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useRoutes } from 'react-router-dom'
 import routes from './router/routerConfig'
 import { MyContext } from './MyContext'
-// import Header from './components/Header/Header'
+import Header from './components/Header/Header'
 import { GlobalStyle } from './style'
 import { useDispatch, useSelector } from 'react-redux'
 import useWindowSize from './hooks/isDesktop'
-import { updateDesktop } from './redux/counterSlice'
+import { updateDesktop } from '@/redux/reducer'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './style'
-import CommunityLinkGroup from './components/CommunityLinkGroup/CommunityLinkGroup'
+// import CommunityLinkGroup from './components/CommunityLinkGroup/CommunityLinkGroup'
+import ToastContainer from './components/Toast/ToastContainer'
 import React from 'react'
+import { ConfigProvider } from 'antd'
+import { LoadingProvider } from './components/Loading'
 function App() {
   const element = useRoutes(routes)
   const size = useWindowSize()
   const [Name, setName] = useState('Im jelly')
   const dispatch = useDispatch()
-  const isDesktop = useSelector((state: { counter: { isDesktop: boolean } }) => state.counter.isDesktop)
+  const isDesktop = useSelector((state: { app: { isDesktop: boolean } }) => state.app.isDesktop)
+  const isDark = useSelector((state: { app: { isDark: boolean } }) => state.app.isDark)
 
-  console.log('isDesktop', isDesktop)
-  useEffect(() => {
+  useMemo(() => {
     dispatch(updateDesktop(size.isDesktop))
   }, [size.isDesktop])
   const getTheme = useCallback(() => {
-    return { ...defaultTheme, isDesktop }
-  }, [isDesktop])
+    return { ...defaultTheme, isDesktop, isDark }
+  }, [isDesktop, isDark])
 
   return (
-    <MyContext.Provider value={{ Name, setName }}>
-      <ThemeProvider theme={getTheme()}>
-        <GlobalStyle />
-        {/* <Header /> */}
-        {element}
-        <CommunityLinkGroup />
-      </ThemeProvider>
-    </MyContext.Provider>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#F95997',
+        },
+      }}
+    >
+      <MyContext.Provider value={{ Name, setName }}>
+        <ThemeProvider theme={getTheme()}>
+          <LoadingProvider>
+            <GlobalStyle />
+            <Header />
+            {element}
+            {/* <CommunityLinkGroup /> */}
+            <ToastContainer />
+          </LoadingProvider>
+        </ThemeProvider>
+      </MyContext.Provider>
+    </ConfigProvider>
   )
 }
 

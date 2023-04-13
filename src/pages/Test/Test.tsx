@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import reactLogo from '../../assets/react.svg'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from '../../redux/counterSlice'
+import { decrement, increment, incrementByAmount } from '../../redux/reducer'
 import '../../App.less'
 import CONFIG from '../../config/index'
 import React from 'react'
