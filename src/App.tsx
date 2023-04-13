@@ -14,7 +14,7 @@ import ToastContainer from './components/Toast/ToastContainer'
 import React from 'react'
 import { ConfigProvider } from 'antd'
 import { LoadingProvider } from './components/Loading'
-function App() {
+const App = () => {
   const element = useRoutes(routes)
   const size = useWindowSize()
   const [Name, setName] = useState('Im jelly')
@@ -25,6 +25,7 @@ function App() {
   useMemo(() => {
     dispatch(updateDesktop(size.isDesktop))
   }, [size.isDesktop])
+
   const getTheme = useCallback(() => {
     return { ...defaultTheme, isDesktop, isDark }
   }, [isDesktop, isDark])
