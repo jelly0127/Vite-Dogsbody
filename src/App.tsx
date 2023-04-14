@@ -24,7 +24,7 @@ const App = () => {
 
   useMemo(() => {
     dispatch(updateDesktop(size.isDesktop))
-  }, [size.isDesktop])
+  }, [dispatch, size.isDesktop])
 
   const getTheme = useCallback(() => {
     return { ...defaultTheme, isDesktop, isDark }

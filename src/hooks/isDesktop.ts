@@ -19,13 +19,13 @@ const useWindowSize = () => {
       height: document.documentElement.clientHeight,
       isDesktop: document.documentElement.clientWidth > WIDTH ? true : false,
     })
-  }, [size.isDesktop])
+  }, [])
   useEffect(() => {
     window.addEventListener('resize', fun)
     return () => {
       window.removeEventListener('resize', fun)
     }
-  }, [])
+  }, [fun])
 
   return size
 }

@@ -59,6 +59,8 @@ const RootBox = styled.div`
   .right_box_Theme {
     height: 28px;
     width: 28px;
+    ${flexCenter}
+
     button {
       ${flexCenter}
       width: 100%;

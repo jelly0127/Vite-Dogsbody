@@ -50,12 +50,12 @@ const Test: FC = memo(() => {
           setTime(time => time + 1)
         }, 100))
       : null
-  }, [time])
+  }, [])
 
   const handlePause = useCallback(() => {
     clearInterval(timer.current)
     timer.current = null
-  }, [time])
+  }, [])
 
   const callback = useCallback(() => {
     console.log(counts)

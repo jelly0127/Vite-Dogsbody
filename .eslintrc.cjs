@@ -15,7 +15,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
     'no-alert': 2,
     'no-undef': 2,
@@ -28,6 +28,10 @@ module.exports = {
     'react/display-name': 'off',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    // 检查 Hooks 的使用规则
+    'react-hooks/rules-of-hooks': 'error',
+    // 检查依赖项的声明
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     react: {
