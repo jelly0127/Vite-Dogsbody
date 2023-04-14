@@ -6,6 +6,8 @@ import vitePluginImp from 'vite-plugin-imp'
 import legacy from '@vitejs/plugin-legacy'
 import progress from 'vite-plugin-progress'
 import viteEslint from 'vite-plugin-eslint'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   //配置别名路径
@@ -13,7 +15,28 @@ export default defineConfig({
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
     alias: {
       '@': '/src',
+      stream: 'stream-browserify',
+      crypto: 'crypto-browserify',
+      assert: 'assert',
     },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis',
+      },
+      // Enable esbuild polyfill plugins
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          process: true,
+          buffer: true,
+        }),
+      ],
+    },
+  },
+  define: {
+    'process.env': {},
   },
   server: {
     host: '0.0.0.0',

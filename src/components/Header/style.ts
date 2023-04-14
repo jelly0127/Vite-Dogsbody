@@ -5,7 +5,7 @@ import ICON_SUN_DARK from './images/icon-sun-dark.svg'
 import ICON_MOON_DARK from './images/icon-moon-dark.svg'
 import ICON_MOON_LIGHT from './images/icon-moon-light.svg'
 import ICON_WALLET_LOGO from '@/images/jelly.jpg'
-import ICON_LOGO from '../../../public/DOG3.svg'
+import ICON_LOGO from './images/DOG3.svg'
 const RootBox = styled.div`
   height: 48px;
   width: 100%;
