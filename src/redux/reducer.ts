@@ -1,28 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+import { ConnectionType } from '@/web3/connections'
+interface AppState {
+  selectedWallet?: ConnectionType
+  isDesktop: boolean
+  isDark: boolean
+  value: number
+}
 export const DESKTOP_WIDTH = 768
 export let isDesktop = false
 export const isDark = true
-const isShowWalletBox = false
+
 if (typeof document !== 'undefined') {
   if (window.innerWidth >= DESKTOP_WIDTH) {
     isDesktop = true
   }
 }
+const initialState: AppState = {
+  value: 0,
+  selectedWallet: undefined,
+  isDesktop,
+  isDark,
+}
 export const initSlice = createSlice({
   name: 'app',
-  initialState: {
-    value: 0,
-    isDesktop,
-    isDark,
-    isShowWalletBox,
-  },
+  initialState,
   reducers: {
     increment: state => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.value += 1
     },
     decrement: state => {
@@ -38,13 +41,14 @@ export const initSlice = createSlice({
     updateDark: (state, action) => {
       state.isDark = action.payload
     },
-    updateShowWalletBox: (state, action) => {
-      state.isShowWalletBox = action.payload
+    updateSelectedWallet(state, { payload: { wallet } }) {
+      state.selectedWallet = wallet
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, updateDesktop, updateDark } = initSlice.actions
+export const { increment, decrement, incrementByAmount, updateDesktop, updateDark, updateSelectedWallet } =
+  initSlice.actions
 
 export default initSlice.reducer

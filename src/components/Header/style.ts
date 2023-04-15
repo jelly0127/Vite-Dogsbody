@@ -12,7 +12,9 @@ const RootBox = styled.div`
   padding: 0 20px;
   flex-direction: row;
   justify-content: space-between;
-
+  /* background: #7a4add; */
+  position: sticky;
+  top: 0;
   .logo_box {
     flex-direction: row;
     align-items: center;
@@ -26,11 +28,6 @@ const RootBox = styled.div`
     align-items: center;
     justify-content: center;
   }
-  /* .right_box_network {
-    height: 36px;
-    width: 60px;
-    background-color: #956fe1;
-  } */
 
   .logo_box_text {
     margin-left: 10px;
@@ -41,21 +38,8 @@ const RootBox = styled.div`
     align-items: center;
     line-height: ${(prop: any) => prop.theme.fontNormal};
     height: 100%;
-    /* width: 320px; */
   }
-  /* .right_box_wallet {
-    flex-direction: row;
-    align-items: center;
-    background-color: #956fe1;
-    width: 150px;
-    height: 36px;
-    border-radius: 20px;
-    img {
-      height: 28px;
-      width: 28px;
-      margin: 0 10px 0 5px;
-    }
-  } */
+
   .right_box_Theme {
     height: 28px;
     width: 28px;
@@ -67,10 +51,6 @@ const RootBox = styled.div`
       height: 100%;
       background-color: unset;
       border: unset;
-      /* color: ${(prop: any) => prop.theme.grey3}; */
-      /* :hover {
-      border: 0.5px solid ${(prop: any) => prop.theme.primaryColor};
-    } */
     }
   }
 `

@@ -1,7 +1,7 @@
 import { initializeConnector } from '@web3-react/core'
 import { GnosisSafe } from '@web3-react/gnosis-safe'
 
-import { Connection, ConnectionType } from './connections'
+import { Connection, ConnectionType } from '../connections'
 
 export function buildGnosisSafeConnector() {
   const [web3GnosisSafe, web3GnosisSafeHooks] = initializeConnector<GnosisSafe>(actions => new GnosisSafe({ actions }))

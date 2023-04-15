@@ -1,12 +1,11 @@
 import { Web3ReactHooks } from '@web3-react/core'
 import { AddEthereumChainParameter, Connector } from '@web3-react/types'
-
-import { buildCoinbaseWalletConnector } from './coinbase'
-import { CHAIN_INFO } from './constants'
-import { buildGnosisSafeConnector } from './gnosis'
-import { buildInjectedConnector } from './injected'
-import { buildNetworkConnector } from './network'
-import { buildWalletConnectConnector } from './wallet-connect'
+import { buildCoinbaseWalletConnector } from './walletSdk/coinbase'
+import { NETWORK_CONFIG } from './chainId'
+import { buildGnosisSafeConnector } from './walletSdk/gnosis'
+import { buildInjectedConnector } from './walletSdk/injected'
+import { buildNetworkConnector } from './walletSdk/network'
+import { buildWalletConnectConnector } from './walletSdk/wallet-connect'
 
 export interface Connection {
   connector: Connector
@@ -77,12 +76,12 @@ export const switchNetwork = async (chainId: number, connectionType: ConnectionT
     return
   }
 
-  const chainInfo = CHAIN_INFO[chainId]
+  const chainInfo = NETWORK_CONFIG[chainId]
   const addChainParameter: AddEthereumChainParameter = {
     chainId,
-    chainName: chainInfo.label,
-    rpcUrls: [chainInfo.rpcUrl],
-    nativeCurrency: chainInfo.nativeCurrency,
+    chainName: chainInfo.chainName,
+    rpcUrls: chainInfo.rpcUrls,
+    nativeCurrency: chainInfo.nativeCurrency as any,
     blockExplorerUrls: [chainInfo.explorer],
   }
   await connector.activate(addChainParameter)

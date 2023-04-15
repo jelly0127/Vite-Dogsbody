@@ -1,8 +1,8 @@
 import { initializeConnector } from '@web3-react/core'
 import { WalletConnect } from '@web3-react/walletconnect'
 
-import { Connection, ConnectionType, onConnectionError } from './connections'
-import { CHAIN_TO_URL_MAP } from './constants'
+import { Connection, ConnectionType, onConnectionError } from '../connections'
+import { CHAIN_TO_URL_MAP } from '../chainId'
 
 export function buildWalletConnectConnector() {
   const [web3WalletConnect, web3WalletConnectHooks] = initializeConnector<WalletConnect>(

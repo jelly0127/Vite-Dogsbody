@@ -5,7 +5,7 @@ import store from '@/redux/store'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Routes } from 'react-router-dom'
 import 'antd/dist/reset.css'
-import { Web3ContextProvider } from './libs/components/Web3ContextProvider'
+import { Web3Provider } from './web3/web3Provider'
 import { Buffer } from 'buffer'
 
 // import VConsole from 'vconsole'
@@ -17,12 +17,12 @@ if (window.ethereum) {
 window.Buffer = Buffer
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Web3ContextProvider>
-      <Provider store={store}>
+    <Provider store={store}>
+      <Web3Provider>
         <Routes>
           <App />
         </Routes>
-      </Provider>
-    </Web3ContextProvider>
+      </Web3Provider>
+    </Provider>
   </React.StrictMode>
 )

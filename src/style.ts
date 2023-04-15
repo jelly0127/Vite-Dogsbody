@@ -75,6 +75,9 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     margin: 0;
     padding: 0;
+      ::-webkit-scrollbar {
+    display: none;
+  }
   }
   button{
     display: flex;

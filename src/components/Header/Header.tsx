@@ -3,7 +3,8 @@ import { Button } from 'antd'
 import { Logo, RootBox, ThemeLogo } from './style'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateDark } from '../../redux/reducer'
-// import Wallet from '../Wallet/Wallet'
+
+import Wallet from '../Wallet/Wallet'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const Header = () => {
         </a>
       </div>
       <div className="right_box">
-        <div className="wallet_box">{/* <Wallet /> */}</div>
+        <div className="wallet_box">{<Wallet />}</div>
         <div className="right_box_Theme">
           <Button className="right_box_button" onClick={() => dispatch(updateDark(!isDark))}>
             <ThemeLogo />
