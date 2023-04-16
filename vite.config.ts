@@ -2,12 +2,11 @@ import { defineConfig, type PluginOption } from 'vite'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
-import vitePluginImp from 'vite-plugin-imp'
 import legacy from '@vitejs/plugin-legacy'
 import progress from 'vite-plugin-progress'
 import viteEslint from 'vite-plugin-eslint'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-
+import requireTransform from 'vite-plugin-require-transform'
 // https://vitejs.dev/config/
 export default defineConfig({
   //配置别名路径
@@ -42,6 +41,7 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   plugins: [
+    // requireTransform({ fileRegex: /.js$/ }),
     react(),
     viteEslint({
       failOnError: false,
@@ -55,17 +55,7 @@ export default defineConfig({
       apply: 'build',
     },
     //按需加载
-    vitePluginImp({
-      libList: [
-        {
-          libName: 'antd',
-          style(name) {
-            // use less
-            return `antd/es/${name}/style/index.js`
-          },
-        },
-      ],
-    }),
+
     //压缩代码
     { ...viteCompression(), apply: 'build' },
     //分析构建

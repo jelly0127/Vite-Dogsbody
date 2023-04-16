@@ -25,6 +25,9 @@ const flexCenter = `
   justify-content: center;
   align-items: center;
 `
+const flexRow = `
+    flex-direction: row;
+`
 const lightTheme = { bgColor: '#FFFFFF', fontColor: '#000' }
 const darkTheme = {
   bgColor: `linear-gradient(113.54deg,
@@ -51,16 +54,14 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     --animate-duration: 2s !important;
     --animate-delay: 0.9s !important;
-    color: ${(prop: any) => (prop.theme.isDark ? darkTheme.fontColor : lightTheme.fontColor)}!important;
+    color: ${(prop: any) => (prop.theme.isDark ? darkTheme.fontColor : lightTheme.fontColor)};
     background: ${(prop: any) => (prop.theme.isDark ? darkTheme.bgColor : lightTheme.bgColor)};
-  button{
-    color: ${(prop: any) => (prop.theme.isDark ? darkTheme.fontColor : lightTheme.fontColor)}!important;
-  }
+
   }
   
 
   body {
-   
+ 
   .adm-mask{
     opacity: 0.3 !important;
   }
@@ -69,13 +70,28 @@ const GlobalStyle = createGlobalStyle`
   body, textarea, input, button {
     line-height: 1;
   }
+input,textarea{
+    ::-webkit-input-placeholder {
+          /*Webkit browsers*/
+          color: #999 !important;
+        }
+    :-moz-placeholder{/*Mozilla Firefox 4 to 8*/
+	       color:#999;
+        }
+           ::moz-placeholder{/*Mozilla Firefox 19+*/
+	      color:#999;
+        }
+   :-ms-input-placeholder{/*Internet Explorer 10+*/
+        color:#999;
+        }
 
-  body, div, p {
+}
+  div, p {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
-      ::-webkit-scrollbar {
+    ::-webkit-scrollbar {
     display: none;
   }
   }
@@ -136,4 +152,4 @@ const defaultTheme: CustomTheme = {
   bgUrl: '',
 }
 
-export { GlobalStyle, defaultTheme, flexCenter, darkTheme, lightTheme }
+export { GlobalStyle, defaultTheme, flexCenter, darkTheme, lightTheme, flexRow }

@@ -108,3 +108,8 @@ export const getDate = (timestamp: string | number, getWeek?: boolean) => {
   }
   return `${month}.${day},${year}`
 }
+
+// 检测钱包地址是否有效
+export const isAddressValid = (address: string) => {
+  return utils.isAddress(address)
+}

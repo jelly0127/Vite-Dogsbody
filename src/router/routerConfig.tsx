@@ -6,8 +6,11 @@ import { RouteObject } from 'react-router-dom'
 const Main = React.lazy(() => import('../pages/Main/Main'))
 const Home = React.lazy(() => import('../pages/Home/Home'))
 const History = React.lazy(() => import('../pages/History/History'))
-// const Ido = React.lazy(() => import('../pages/Ido/Ido'))
+const CreateWallet = React.lazy(() => import('../pages/ToolPages/CreateWallet/CreateWallet'))
+const LuckyWallet = React.lazy(() => import('../pages/ToolPages/LuckyWallet/LuckyWallet'))
+const Transfer = React.lazy(() => import('../pages/ToolPages/Transfer/Transfer'))
 const Test = React.lazy(() => import('../pages/Test/Test'))
+const NotFound = React.lazy(() => import('../pages/NotFound/NotFound'))
 //懒加载格式定义
 const lazyFactory = (LazyComponent: React.LazyExoticComponent<React.FC<{}>>) => {
   return (
@@ -21,10 +24,13 @@ const lazyFactory = (LazyComponent: React.LazyExoticComponent<React.FC<{}>>) => 
 //路由路径的基本配置
 export const routes: RouteObject[] = [
   { path: '/', element: lazyFactory(Home) },
-  // { path: '/ido', element: lazyFactory(Ido) }
   { path: '/test', element: lazyFactory(Test) },
   { path: '/main', element: lazyFactory(Main) },
-  { path: '/History', element: lazyFactory(History) },
+  { path: '/history', element: lazyFactory(History) },
+  { path: '/wallet', element: lazyFactory(CreateWallet) },
+  { path: '/address', element: lazyFactory(LuckyWallet) },
+  { path: '/transfer', element: lazyFactory(Transfer) },
+  { path: '*', element: lazyFactory(NotFound) },
 ]
 //导出
 export default routes

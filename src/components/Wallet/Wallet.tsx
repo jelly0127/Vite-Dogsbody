@@ -92,6 +92,10 @@ const Wallet: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectWallet, hasMetaMaskExtension, chainId])
   const handleSwitchNetwork = async (chainId: string) => {
+    if (!account) {
+      await handleShowNetwork()
+      return setIsWalletModal(true)
+    }
     loading.show()
     await handleShowNetwork()
     await switchNetwork(parseInt(chainId), connectionType)
@@ -157,15 +161,22 @@ const Wallet: FC = () => {
           <div
             className={networkName !== NETWORK_CONFIG[parseInt(chainId)].chainName ? 'content' : 'content current'}
             key={chainId}
+            onClick={() => {
+              networkName !== NETWORK_CONFIG[parseInt(chainId)].chainName && handleSwitchNetwork(chainId)
+            }}
           >
-            <div className="netWork_row" onClick={() => handleSwitchNetwork(chainId)}>
+            <div className="netWork_row">
               <img src={NETWORK_CONFIG[parseInt(chainId)].logo} alt="" />
               <span className="netWork_row_text">{NETWORK_CONFIG[parseInt(chainId)].chainName}</span>
               {networkName === NETWORK_CONFIG[parseInt(chainId)].chainName && <div className="netWork_row_status" />}
             </div>
             {networkName === NETWORK_CONFIG[parseInt(chainId)].chainName && (
               <div className="scan_row">
-                <a href={NETWORK_CONFIG[parseInt(chainId)].explorer} target="_blank" rel="noreferrer">
+                <a
+                  href={NETWORK_CONFIG[parseInt(chainId)].explorer + 'address/' + `${account}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <span>{NETWORK_CONFIG[parseInt(chainId)].chainName} etherscan</span>
                   <img src={ICON_LINK} alt="" />
                 </a>

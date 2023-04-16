@@ -3,7 +3,7 @@ import { flexCenter } from '@/style'
 import { Button, Dropdown } from 'antd'
 import ICON_COPY_LIGHT from '@/images/icon-copy-light.svg'
 const WalletWrapper = styled.div`
-  width: 280px;
+  width: 330px;
   height: 42px;
   margin-right: 20px;
   flex-direction: row;
@@ -38,6 +38,7 @@ const InstallStyle = styled(Button)`
 const NetworkContent = styled(Button)`
   border: 1px solid ${(prop: any) => (prop.theme.isDark ? 'none' : prop.theme.grey8)}!important;
   background: unset;
+  color: ${(prop: any) => (prop.theme.isDark ? prop.theme.grey3 : prop.theme.grey1)};
 `
 const WalletContent = styled(Button)`
   flex-direction: row;
@@ -55,6 +56,7 @@ const WalletContent = styled(Button)`
     height: 28px;
     margin-right: 10px;
   }
+  color: ${(prop: any) => (prop.theme.isDark ? prop.theme.grey3 : prop.theme.grey1)};
 `
 const WalletBox = styled(Button)`
   width: 100%;
@@ -116,7 +118,6 @@ const SelectBox = styled.div`
     height: 100%;
     width: 100%;
     position: relative;
-
     img {
       width: 28px;
       height: 28px;
@@ -195,6 +196,7 @@ const WalletInfoBox = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    color: ${(prop: any) => prop.theme.grey8};
   }
 `
 export { InstallStyle, WalletWrapper, NetworkContent, WalletBox, WalletContent, SelectBox, MDropdown, WalletInfoBox }

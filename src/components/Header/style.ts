@@ -6,13 +6,15 @@ import ICON_MOON_DARK from './images/icon-moon-dark.svg'
 import ICON_MOON_LIGHT from './images/icon-moon-light.svg'
 import ICON_WALLET_LOGO from '@/images/jelly.jpg'
 import ICON_LOGO from './images/DOG3.svg'
+
 const RootBox = styled.div`
-  height: 48px;
+  height: 58px;
   width: 100%;
   padding: 0 20px;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  /* background: #7a4add; */
+  background: ${(prop: any) => (prop.theme.isDark ? '#7a4add ' : prop.theme.grey3)};
   position: sticky;
   top: 0;
   .logo_box {

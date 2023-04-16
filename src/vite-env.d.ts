@@ -9,3 +9,5 @@ interface Window {
     isBraveWallet?: true
   }
 }
+declare module 'js-export-excel'
+declare module 'ethereum-hdwallet'

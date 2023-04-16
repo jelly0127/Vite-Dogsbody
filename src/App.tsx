@@ -8,8 +8,9 @@ import useWindowSize from './hooks/isDesktop'
 import { updateDesktop } from '@/redux/reducer'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './style'
-// import CommunityLinkGroup from './components/CommunityLinkGroup/CommunityLinkGroup'
 import ToastContainer from './components/Toast/ToastContainer'
+import MessageContainer from './components/Message/MessageContainer'
+
 import React from 'react'
 import { ConfigProvider } from 'antd'
 import { LoadingProvider } from './components/Loading'
@@ -44,8 +45,8 @@ const App = () => {
             <GlobalStyle />
             <Header />
             {element}
-            {/* <CommunityLinkGroup /> */}
             <ToastContainer />
+            <MessageContainer />
           </LoadingProvider>
         </ThemeProvider>
       </MyContext.Provider>
