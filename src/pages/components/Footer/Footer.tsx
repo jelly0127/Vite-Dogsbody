@@ -4,6 +4,7 @@ import ICON_PINKSALE from './imgs/Pinkswap.png'
 import ICON_GEMPAD from './imgs/Gempad.svg'
 import ICON_TELEGRAM from './imgs/telegram.svg'
 import ICON_TWITTER from './imgs/twitter.svg'
+import ICON_GITHUB from './imgs/github.svg'
 import { FootBox, RootBox } from './FooterStyle'
 import { AlinkList } from './server'
 import LOGO from './imgs/weChat.jpg'
@@ -52,6 +53,9 @@ const thirdBox = () => {
         </a>
         <a href="" target="_blank" rel="noreferrer">
           <img src={ICON_TWITTER} alt="" />
+        </a>
+        <a href="https://github.com/jelly0127/" target="_blank" rel="noreferrer">
+          <img src={ICON_GITHUB} alt="" />
         </a>
       </div>
       <div className="icon_logo">

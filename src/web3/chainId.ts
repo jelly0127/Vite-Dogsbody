@@ -1,6 +1,6 @@
-import OpIcon from './images/optimism-logo.svg'
+// import OpIcon from './images/optimism-logo.svg'
 import BscIcon from './images/bsc-logo.png'
-import ETHIcon from './images/ethereum-logo.png'
+// import ETHIcon from './images/ethereum-logo.png'
 export enum ChainId {
   MAINNET = 1,
   BSC_TEST = 97,
