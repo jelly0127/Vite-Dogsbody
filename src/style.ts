@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
 
 interface CustomTheme {
   grey1: string
@@ -27,6 +27,23 @@ const flexCenter = `
 `
 const flexRow = `
     flex-direction: row;
+`
+const jellyAnimation = keyframes`
+${''} {
+    ${'0%'} ,
+    ${'100%'} {
+      transform: scale(1, 1);
+    }
+    ${'25%'}  {
+      transform: scale(0.9, 1.1);
+    }
+    ${'50%'}  {
+      transform: scale(1.1, 0.9);
+    }
+   ${'75%'} {
+      transform: scale(0.95, 1.05);
+    }
+  }
 `
 const lightTheme = { bgColor: '#FFFFFF', fontColor: '#000' }
 const darkTheme = {
@@ -152,4 +169,4 @@ const defaultTheme: CustomTheme = {
   bgUrl: '',
 }
 
-export { GlobalStyle, defaultTheme, flexCenter, darkTheme, lightTheme, flexRow }
+export { GlobalStyle, defaultTheme, flexCenter, darkTheme, lightTheme, flexRow, jellyAnimation }

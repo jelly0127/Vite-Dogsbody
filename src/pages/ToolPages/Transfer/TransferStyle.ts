@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flexCenter } from '../../../style'
+import { flexCenter, jellyAnimation } from '../../../style'
 
 const RootBox = styled.div`
   position: relative;
@@ -12,21 +12,6 @@ const RootBox = styled.div`
 
   .tabs_box {
     margin-top: 30px;
-  }
-  @keyframes jelly {
-    0%,
-    100% {
-      transform: scale(1, 1);
-    }
-    25% {
-      transform: scale(0.9, 1.1);
-    }
-    50% {
-      transform: scale(1.1, 0.9);
-    }
-    75% {
-      transform: scale(0.95, 1.05);
-    }
   }
 `
 const BackBarBox = styled.div`
@@ -158,7 +143,7 @@ const BackBarBox = styled.div`
         width: auto;
         border-radius: 5px;
         :hover {
-          animation: jelly 0.5s;
+          animation: ${jellyAnimation} 0.5s;
         }
       }
 

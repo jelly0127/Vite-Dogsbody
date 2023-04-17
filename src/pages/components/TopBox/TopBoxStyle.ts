@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flexCenter } from '../../../style'
+import { flexCenter, jellyAnimation } from '../../../style'
 const RootBox = styled.div`
   height: 260px;
   width: 100%;
@@ -52,23 +52,10 @@ const RootBox = styled.div`
         font-size: ${(prop: any) => prop.theme.fontSmall};
         ${flexCenter}
         flex-direction: row;
-        @keyframes jelly {
-          0%,
-          100% {
-            transform: scale(1, 1);
-          }
-          25% {
-            transform: scale(0.9, 1.1);
-          }
-          50% {
-            transform: scale(1.1, 0.9);
-          }
-          75% {
-            transform: scale(0.95, 1.05);
-          }
-        }
+
         :hover {
-          animation: jelly 0.5s;
+          cursor: pointer;
+          animation: ${jellyAnimation} 0.5s;
         }
       }
     }
