@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import styled from 'styled-components'
 
 const StyledContainer = styled(Container)`
+  margin-top: 100px;
   align-items: center;
-  font-size: ${(prop: { theme: { fontNormal: any } }) => prop.theme.fontNormal};
+  font-size: ${(prop: any) => prop.theme.fontNormal};
   .Toastify__toast-icon {
     display: none;
   }
@@ -46,8 +47,8 @@ const MessageContainer: React.FC = () => {
     <StyledContainer
       enableMultiContainer
       containerId={MESSAGE_CONTAINER_ID}
-      position="bottom-center"
-      hideProgressBar
+      position="top-right"
+      hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
       rtl={false}

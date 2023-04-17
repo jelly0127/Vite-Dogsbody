@@ -4,7 +4,7 @@ import { JsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useMemo } from 'react'
 import { isAddress } from '@/tools/index'
-import { ABI_MAP, contractMethodMap, ContractMethodsMap, contractAddressMap, ContractKey } from './abi'
+import { ABI_MAP, contractMethodMap, ContractMethodsMap, contractAddressMap } from './abi'
 
 // account is not optional
 const getSigner = (provider: JsonRpcProvider, account: string): JsonRpcSigner => {

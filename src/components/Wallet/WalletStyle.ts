@@ -39,6 +39,10 @@ const NetworkContent = styled(Button)`
   border: 1px solid ${(prop: any) => (prop.theme.isDark ? 'none' : prop.theme.grey8)}!important;
   background: unset;
   color: ${(prop: any) => (prop.theme.isDark ? prop.theme.grey3 : prop.theme.grey1)};
+  .wrong {
+    color: ${(prop: any) => prop.theme.grey5};
+    font-size: ${(prop: any) => prop.theme.fontLarge};
+  }
 `
 const WalletContent = styled(Button)`
   flex-direction: row;

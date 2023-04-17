@@ -1,7 +1,7 @@
 import { Tooltip } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
-import ICON_WHAT from '../../../images/what-icon.svg'
+import ICON_WHAT from '../../../../images/what-icon.svg'
 
 const RootBox = styled.div`
   /* background-color: #fafafa; */

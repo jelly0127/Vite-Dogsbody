@@ -1,4 +1,4 @@
-import { BigNumber, utils } from 'ethers'
+import { BigNumber, ethers, utils } from 'ethers'
 import { getAddress } from 'ethers/lib/utils'
 // import VConsole from 'vconsole'
 
@@ -112,4 +112,22 @@ export const getDate = (timestamp: string | number, getWeek?: boolean) => {
 // 检测钱包地址是否有效
 export const isAddressValid = (address: string) => {
   return utils.isAddress(address)
+}
+// 查看钱包余额
+export const getBalance = async (address: string, provider: ethers.providers.Web3Provider) => {
+  const balance = await provider!.getBalance(address)
+  return ethers.utils.formatEther(balance)
+}
+//转账的 gas 费用
+export const getGasCost = async (from: string, to: [any], value: string, provider: ethers.providers.Web3Provider) => {
+  let gas = 0
+  for (let i = 0; i < to.length; i++) {
+    const gasPrice = await provider!.getGasPrice()
+    const estimateGas = await provider!.estimateGas({
+      from,
+      to: to[i].wallet,
+      value: ethers.utils.parseEther(value),
+    })
+    return (gas += Number(ethers.utils.formatEther(gasPrice.mul(estimateGas))))
+  }
 }

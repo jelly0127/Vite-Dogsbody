@@ -1,7 +1,7 @@
 import { Web3ReactHooks } from '@web3-react/core'
 import { AddEthereumChainParameter, Connector } from '@web3-react/types'
 import { buildCoinbaseWalletConnector } from './walletSdk/coinbase'
-import { NETWORK_CONFIG } from './chainId'
+import { ALL_SUPPORTED_CHAIN_IDS, NETWORK_CONFIG } from './chainId'
 import { buildGnosisSafeConnector } from './walletSdk/gnosis'
 import { buildInjectedConnector } from './walletSdk/injected'
 import { buildNetworkConnector } from './walletSdk/network'
@@ -71,6 +71,9 @@ export const switchNetwork = async (chainId: number, connectionType: ConnectionT
 
   const { connector } = getConnection(connectionType)
 
+  if (!ALL_SUPPORTED_CHAIN_IDS.includes(chainId)) {
+    return
+  }
   if (connectionType === ConnectionType.WALLET_CONNECT || connectionType === ConnectionType.NETWORK) {
     await connector.activate(chainId)
     return

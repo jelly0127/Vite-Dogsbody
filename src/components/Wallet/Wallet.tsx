@@ -1,7 +1,7 @@
 import ICON_WALLET_LOGO from '@/images/jelly.jpg'
 import ICON_LINK from '@/images/link.svg'
 import ICON_COPY from '@/images/icon-copy.svg'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useMemo, useState } from 'react'
 import { Button, theme } from 'antd'
 import ModalBox from '../Modal/Modal'
 
@@ -82,15 +82,15 @@ const Wallet: FC = () => {
     setIsWalletInfo(false)
     setConnectionType(null)
   }
-  useEffect(() => {
+  useMemo(() => {
     if ((selectWallet as any) !== ('undefined' as any) && hasMetaMaskExtension) {
       handleConnect(selectWallet!)
     }
+
     if (chainId) {
-      setNetworkName(NETWORK_CONFIG[chainId!].chainName)
+      setNetworkName(NETWORK_CONFIG[chainId!]?.chainName ? NETWORK_CONFIG[chainId!]?.chainName : '')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectWallet, hasMetaMaskExtension, chainId])
+  }, [selectWallet, chainId, hasMetaMaskExtension, handleConnect])
   const handleSwitchNetwork = async (chainId: string) => {
     if (!account) {
       await handleShowNetwork()
@@ -159,25 +159,25 @@ const Wallet: FC = () => {
         <span className="title_row">Select a network</span>
         {Object.keys(NETWORK_CONFIG).map(chainId => (
           <div
-            className={networkName !== NETWORK_CONFIG[parseInt(chainId)].chainName ? 'content' : 'content current'}
+            className={networkName !== NETWORK_CONFIG[parseInt(chainId)]?.chainName ? 'content' : 'content current'}
             key={chainId}
             onClick={() => {
-              networkName !== NETWORK_CONFIG[parseInt(chainId)].chainName && handleSwitchNetwork(chainId)
+              networkName !== NETWORK_CONFIG[parseInt(chainId)]?.chainName && handleSwitchNetwork(chainId)
             }}
           >
             <div className="netWork_row">
               <img src={NETWORK_CONFIG[parseInt(chainId)].logo} alt="" />
               <span className="netWork_row_text">{NETWORK_CONFIG[parseInt(chainId)].chainName}</span>
-              {networkName === NETWORK_CONFIG[parseInt(chainId)].chainName && <div className="netWork_row_status" />}
+              {networkName === NETWORK_CONFIG[parseInt(chainId)]?.chainName && <div className="netWork_row_status" />}
             </div>
-            {networkName === NETWORK_CONFIG[parseInt(chainId)].chainName && (
+            {networkName === NETWORK_CONFIG[parseInt(chainId)]?.chainName && (
               <div className="scan_row">
                 <a
                   href={NETWORK_CONFIG[parseInt(chainId)].explorer + 'address/' + `${account}`}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span>{NETWORK_CONFIG[parseInt(chainId)].chainName} etherscan</span>
+                  <span>{NETWORK_CONFIG[parseInt(chainId)]?.chainName} etherscan</span>
                   <img src={ICON_LINK} alt="" />
                 </a>
               </div>
@@ -223,7 +223,11 @@ const Wallet: FC = () => {
         dropdownRender={() => <div style={{ ...contentStyle, ...dropdownStyle }}>{getNetWorkOptions()}</div>}
       >
         <NetworkContent onClick={(e: any) => e.preventDefault()}>
-          {chainId ? NETWORK_CONFIG[chainId!].chainName : 'wrong Network'}
+          {chainId && NETWORK_CONFIG[chainId!]?.chainName ? (
+            NETWORK_CONFIG[chainId!]?.chainName
+          ) : (
+            <div className="wrong"> wrong Network</div>
+          )}
         </NetworkContent>
       </MDropdown>
       <WalletContent onClick={handleShowWallet}>

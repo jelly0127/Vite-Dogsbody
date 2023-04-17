@@ -44,7 +44,9 @@ const BackBarBox = styled.div`
 `
 const TopCardBox = styled.div`
   .text {
-    color: ${(prop: any) => prop.theme.grey3};
+    /* color: ${(prop: any) => prop.theme.grey3}; */
+    color: ${(prop: any) => (prop.theme.isDark ? prop.theme.grey3 : prop.theme.grey1)};
+
     font-size: ${(prop: any) => prop.theme.fontSmall};
     margin-top: 16px;
   }

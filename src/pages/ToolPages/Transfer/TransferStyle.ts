@@ -73,11 +73,11 @@ const BackBarBox = styled.div`
     }
   }
   .address_row_input {
-    width: 400px;
+    width: 180px;
     margin-top: 10px;
   }
   .address_row_right {
-    margin-left: 15px;
+    /* margin-left: 15px; */
   }
   .text_row {
     /* color: #ababab; */
