@@ -6,8 +6,10 @@
   "scripts": {
     "start": "vite dev",
     "dev": "vite",
+    "clean": "rm -rf dist",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "serve": "yarn build && scp -r dist  root@81.71.2.182:/www/wwwroot/tool && yarn clean",
+    "view": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ./",
     "prepare": "husky install"
   },
